@@ -45,7 +45,7 @@ function CSS3MultiColumn() {
   // loadStylesheets:
   // Loop through the stylesheets collection and load the css text into the cssCache object
   function loadStylesheets() {
-    if(document.styleSheets) {  // Firefox & IE
+    if(document.styleSheets) {
       // initialize cache & load css in the cache
       for(var i=0;i < document.styleSheets.length;i++) {
         if (document.styleSheets[i].href) {
@@ -55,17 +55,6 @@ function CSS3MultiColumn() {
           }
         }
       }
-    } else if (document.getElementsByTagName) { // OPERA
-      var Lt = document.getElementsByTagName('link');
-      // initialize cache
-      for(var i= 0; i<Lt.length; i++) {
-        cssCache[Lt[i].href] = false;
-      }
-      // load css in the cache
-      for(var i= 0; i<Lt.length; i++) {
-        loadCssCache(Lt[i], 'parseStylesheets');
-      }
-      //var St = document.getElementsByTagName('style');
     }
   }
 
