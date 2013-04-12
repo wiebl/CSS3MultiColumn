@@ -46,13 +46,14 @@ function CSS3MultiColumn() {
   // Loop through the stylesheets collection and load the css text into the cssCache object
   function loadStylesheets() {
     if(document.styleSheets) {  // Firefox & IE
-      // initialize cache
+      // initialize cache & load css in the cache
       for(var i=0;i < document.styleSheets.length;i++) {
-        cssCache[document.styleSheets[i].href] = false;
-      }
-      // load css in the cache
-      for(var i=0;i < document.styleSheets.length;i++) {
-        loadCssCache(document.styleSheets[i], 'parseStylesheets');
+        if (document.styleSheets[i].href) {
+          if (document.styleSheets[i].href.indexOf(window.location.host) > -1) {
+            cssCache[document.styleSheets[i].href] = false;
+            loadCssCache(document.styleSheets[i], 'parseStylesheets');
+          }
+        }
       }
     } else if (document.getElementsByTagName) { // OPERA
       var Lt = document.getElementsByTagName('link');
