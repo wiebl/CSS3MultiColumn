@@ -49,7 +49,7 @@ function CSS3MultiColumn() {
       // initialize cache & load css in the cache
       for(var i=0;i < document.styleSheets.length;i++) {
         if (document.styleSheets[i].href) {
-          if (document.styleSheets[i].href.indexOf(window.location.host) > -1) {
+          if (document.styleSheets[i].href.indexOf(window.location.host) > -1 || document.styleSheets[i].href.indexOf('//') < 0) {
             cssCache[document.styleSheets[i].href] = false;
             loadCssCache(document.styleSheets[i], 'parseStylesheets');
           }
