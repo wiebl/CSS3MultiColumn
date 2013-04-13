@@ -772,7 +772,7 @@ CSS3Utility.prototype.cssQuery = function() {
         switch (token) {
             case " ": // descendant
                 for (i in from) {
-          if(typeof from[i]=='function') continue;
+                    if(typeof from[i]=='function') continue;
                     var subset = getElementsByTagNameNS(from[i], filter, namespace);
                     for (var j = 0; j < subset.length; j++) {
                         if (isElement(subset[j]) && (!namespace || compareNamespace(subset[j], namespace)))
